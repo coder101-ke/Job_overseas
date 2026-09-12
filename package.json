@@ -1,1 +1,12 @@
-{"name":"jobs-overseas","version":"1.0.0","private":true,"scripts":{"dev":"vercel dev"},"dependencies":{"@vercel/node":"latest"}}
+{
+  "name": "jobs-overseas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "@vercel/node": "latest"
+  }
+}
