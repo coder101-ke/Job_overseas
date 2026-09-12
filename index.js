@@ -1,0 +1,1 @@
+module.exports=(req,res)=>{if(req.method==="GET"&&req.url==="/api/health")return res.status(200).json({success:true,message:"Jobs Overseas API is running"});res.status(404).json({success:false,message:"API route not found"});};
