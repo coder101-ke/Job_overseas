@@ -1,19 +1,21 @@
 const { createClient } = require("@supabase/supabase-js");
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-);
-
 module.exports = async (req, res) => {
-  if (req.method !== "GET") {
-    return res.status(405).json({
-      success: false,
-      message: "Method not allowed"
-    });
-  }
-
   try {
+    const url = process.env.SUPABASE_URL;
+    const key = process.env.SUPABASE_KEY;
+
+    if (!url || !key) {
+      return res.status(500).json({
+        success: false,
+        error: "Supabase environment variables are missing",
+        hasUrl: !!url,
+        hasKey: !!key
+      });
+    }
+
+    const supabase = createClient(url, key);
+
     const { data, error } = await supabase
       .from("jobs")
       .select("*")
